@@ -1,12 +1,1962 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        window.location.href = "https://tanveer7652.wixsite.com/portfolio";
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ali Tanveer | Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            padding: 4px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #4ecdc4;
+        }
+
+        .btn-secondary:hover {
+            background: #4ecdc4;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Content Sections */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 100px 0 50px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Featured Projects */
+        .featured-projects {
+            background: #111;
+            padding: 80px 0;
+            color: #fff;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid #333;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: #ff6b6b;
+        }
+
+        .project-card::after {
+            content: 'Click to view details';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 107, 107, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-number {
+            color: #ff6b6b;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+
+        .project-status {
+            color: #888;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Experience Page */
+        .experience-timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #ff6b6b;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-role  {
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-company {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #ff6b6b;
+        }
+
+        .timeline-company a {
+            color: inherit; /* Use the same color as the parent */
+            text-decoration: underline; /* Keep it underlined */
+        }
+
+        .timeline-company a:visited {
+            color: inherit; /* Prevent purple on visited links */
+            text-decoration: underline; /* Keep it underlined */
+        }
+
+        .timeline-date{
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .timeline-description {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .timeline-description ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+
+        /* About Page */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            color: #fff;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .about-text h2 {
+            color: #4ecdc4;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Projects Page */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-thumbnail {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #333;
+        }
+
+        .project-thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .project-thumbnail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .project-thumbnail-info {
+            padding: 1.5rem;
+            color: #fff;
+        }
+
+        .project-thumbnail-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #4ecdc4;
+        }
+
+        .project-thumbnail-desc {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Project Detail Page */
+        .project-detail {
+            color: #fff;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .project-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-hero-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .project-meta {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        .meta-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-label {
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .meta-value {
+            color: #ddd;
+        }
+
+        .project-content {
+            line-height: 1.8;
+        }
+
+        .project-content h3 {
+            color: #ff6b6b;
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-content ul {
+            margin-left: 1.5rem;
+            color: #ccc;
+        }
+
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #1a1a1a;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+            color: #fff;
+        }
+
+        .contact-section h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-section p {
+            color: #ddd;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;  /* Center the items horizontally */
+            flex-wrap: wrap;          /* Optional: wraps links if screen is small */
+            margin-top: 1rem;
+        }
+
+        .contact-links a {
+            color: #ff6b6b;
+            text-decoration: underline;
+        }
+
+        .contact-links a:visited {
+            color: #ff6b6b;
+            text-decoration: underline; /* Keep it underlined */
+        }
+
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .project-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .project-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #333;
+            border-top: 4px solid #ff6b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+    </style>
 </head>
 <body>
-    <p>If you are not redirected automatically, follow this <a href="https://tanveer7652.wixsite.com/portfolio">link to my portfolio</a>.</p>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">Muhammad Ali Tanveer</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('experience')">Experience</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div class="page active" id="home-page">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="Profile_Image_Short.jpg" alt="Muhammad Ali Tanveer" width="200" height="200">
+                </div>
+                <h1>Muhammad Ali</h1>
+                <p>I'm a passionate game developer based in Gothenburg, Sweden, specializing in creating captivating gaming experiences across various platforms. With a focus on Character and AI Programming, I strive to bring unique and immersive games to life through my work.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary" onclick="showPage('projects')">View Projects</a>
+                    <a href="#" class="btn btn-secondary" onclick="showPage('about')">About Me</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card" onclick="showProjectDetail('cosmo-conquerors')">
+                        <div class="project-image">
+                            <video autoplay muted loop playsinline aria-label="Cosmo Conquerors">
+                                <source src="CinematicTeaser_Cosmo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-number">01</div>
+                            <div class="project-title">Cosmo Conquerors</div>
+                            <div class="project-status">Lead Developer</div>
+                            <p class="project-description">Crafted playable characters with unique abilities and movement mechanics in C++, alongside advanced weapon systems encompassing varied firearms and melee weapons. <br/> Collaborated on developing an AI system in UE5 utilizing Behavior Trees to enhance strategic communication and dynamic action selection for NPCs.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="showProjectDetail('mechanical-vehicle-simulator')">
+                        <div class="project-image">
+                            <img src="Kamaz_SS.png" alt="Mechanical Vehicle Simulator">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-number">02</div>
+                            <div class="project-title">Simulator</div>
+                            <div class="project-status">Sole Designer and Developer</div>
+                            <p class="project-description">Developed an advanced mechanical vehicle simulator tailored for heavy trucks, offering a realistic training environment.<br/>It meticulously replicates gear changes and features tangible gears and differentials for a comprehensive learning experience.<br/>Utilizing NDisplay in Unreal Engine, it seamlessly shares displays across multiple screens, enhancing immersion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Experience Page -->
+    <div class="page" id="experience-page">
+        <div class="container">
+            <h1 class="section-title">My Professional Experience</h1>
+            <p style="color: #ddd; text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Throughout the years, starting from my Bachelor's, I've collaborated with a variety of organizations, helping them shape their products and optimize their services through my technical expertise. Below is a detailed overview of my professional experience across these roles.</p>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-date">March 2025 - Present</div>      
+                    <div class="timeline-company">
+                            <a href="https://se.linkedin.com/company/tenstar-simulation-ab" target="_blank" rel="noopener noreferrer">Tenstar Simulation</a>
+                    </div>             
+                    <div class="timeline-role">C++ Programmer</div>
+                    <div class="timeline-description">
+                        <p>At Tenstar Simulation, I work as a C++ Programmer focused on developing advanced systems within Unreal Engine for multi-user simulation environments. While my primary role is Unreal development, I also contribute to integration efforts with the company's proprietary engine, helping ensure clean architecture and cross-system interoperability.</p>
+                        <p><strong>Key Contributions:</strong></p>
+                        <ul>
+                            <li>Built modular and extensible C++ systems to support seamless functionality across Unreal and the proprietary engine.</li>
+                            <li>Designed and implemented core systems such as User Metrics, enabling reliable data tracking and control in dual-engine workflows.</li>
+                            <li>Refactored critical code to support replicated vehicle handling and networked session management for multi-user simulations.</li>
+                            <li>Collaborated across teams to align system architecture and ensure high-performance communication between engines.</li>
+                        </ul>
+                        <p><em>Onsite | Gothenburg, Sweden</em></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-date">December 2024 - July 2025</div>
+                    <div class="timeline-company">
+                            <a href="https://www.linkedin.com/company/ilhaminc" target="_blank" rel="noopener noreferrer">ILHAM Studio</a>
+                    </div> 
+                    <div class="timeline-role">Freelance Lead Unreal Developer</div>
+                    <div class="timeline-description">
+                        <p>As a freelance consultant at ILHAM Studio, I led Unreal Engine development on a narrative-driven indie game leading it to get accepted into the iD@Xbox program. I worked closely with designers and junior developers to build scalable systems, align creative vision with gameplay execution, and ensure technical delivery across milestones.</p>
+                        <p><strong>Key Contributions:</strong></p>
+                        <ul>
+                            <li>Directed core Unreal development and mentored junior programmers, guiding the team from prototype up to closed beta status.</li>
+                            <li>Architected modular Game Feature systems to isolate gameplay mechanics, enabling clean separation of concerns and parallel team development.</li>
+                            <li>Built and optimized critical gameplay systems, resolved complex packaging and build pipeline issues, and ensured reliable iteration across development stages.</li>
+                            <li>Maintained close collaboration with designers to translate creative intent into polished, interactive gameplay experiences.</li>
+                        </ul>
+                        <p><em>Remote | Gothenburg, Sweden</em></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-date">September 2023 - March 2025</div>
+                    <div class="timeline-company">
+                            <a href="https://www.linkedin.com/company/paulus-pro" target="_blank" rel="noopener noreferrer">Paulus</a>
+                    </div> 
+                    <div class="timeline-role">Unreal Developer II</div>
+                    <div class="timeline-description">
+                        <p>At Paulus, I joined as an Unreal Developer and was later promoted to Unreal Developer II, taking on lead responsibilities within the product's Unreal Engine pipeline. I worked on real-time cinematic tools with a strong focus on optimization, scalability, and user-driven content.</p>
+                        <p><strong>Key Contributions:</strong></p>
+                        <ul>
+                            <li>Spearheaded development of dynamic cinematic rendering systems that responded to user input, reducing rendering time by ~25%.</li>
+                            <li>Integrated Pixel Streaming to deliver high-quality, real-time visuals in response to user interactions.</li>
+                            <li>Built a client-side .PAK patching pipeline, enabling effortless updates without full repackaging.</li>
+                            <li>Designed and implemented procedural content generation features and an auto-adjusting camera system to support interactive storytelling.</li>
+                        </ul>
+                        <p><em>Remote | Karachi, Pakistan</em></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-date">November 2022 - September 2023</div>
+                    <div class="timeline-company">
+                            <a href="https://www.linkedin.com/company/soultek-ae" target="_blank" rel="noopener noreferrer">Soultek Game Studio</a>
+                    </div>
+                    <div class="timeline-role">Unreal Developer</div>
+                    <div class="timeline-description">
+                        <p>At Soultek, I worked on VR training simulations and more importantly Qaf, a narrative-driven action-adventure game in development. My role spanned gameplay systems, interaction design, and runtime mechanic implementation using both C++ and Blueprints.</p>
+                        <p><strong>Key Contributions:</strong></p>
+                        <ul>
+                            <li>Built a custom ability system in C++ with runtime ability replacement, enabling flexible and scalable gameplay in Qaf.</li>
+                            <li>Engineered core gameplay mechanics and systems (e.g., health, abilities) to support the player experience in a narrative action-adventure context.</li>
+                            <li>Developed immersive VR interactions in Unreal Engine for nurse training simulators, including handover quizzes and pulse-checking mechanics.</li>
+                            <li>Designed interactive object and widget systems for VR, delivering intuitive and realistic user experiences.</li>
+                        </ul>
+                        <p><em>Onsite | Karachi, Pakistan</em></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-date">April 2022 - November 2022</div>
+                    <div class="timeline-company">
+                            <a href="https://www.linkedin.com/company/eoceanem" target="_blank" rel="noopener noreferrer">E.Ocean</a>
+                    </div>
+                    <div class="timeline-role">Software Engineer</div>
+                    <div class="timeline-description">
+                        <p>Though not directly game development, my time at E.Ocean sharpened my software engineering fundamentals in a high-paced product environment. I contributed to backend systems, time-sensitive automation, and client-facing features using Java and Spring Framework.</p>
+                        <p><strong>Key Contributions:</strong></p>
+                        <ul>
+                            <li>Developed the E.Ocean Partner Portal using Spring Framework (Java), powering customer interactions across the platform.</li>
+                            <li>Designed and implemented a recurring, timezone-based campaign system that leveraged the WhatsApp for Business API for scheduled messaging.</li>
+                            <li>Contributed to the Digital Connect platform's stability through hands-on product maintenance and R&D, ensuring a smooth and scalable user experience.</li>
+                        </ul>
+                        <p><em>Onsite | Karachi, Pakistan</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div class="page" id="about-page">
+        <div class="container">
+            <h1 class="section-title">About Me</h1>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="Profile_Image.jpg" alt="Muhammad Ali Tanveer" width="400" height="500">
+                </div>
+                <div class="about-text">
+                    <h2>Muhammad Ali Tanveer</h2>
+                    <p>I'm a gamer at heart and a developer by choice, originally from Pakistan, now building worlds from Gothenburg, Sweden.</p>
+                    
+                    <p>With a Bachelors in Computer Science (graduated with honors and a Bronze medal 🎓) and an ongoing Masters in Game Design, I turned my lifelong passion for games into a career in game development.</p>
+                    
+                    <p>I specialize in gameplay programming and multiplayer systems, with deep hands-on experience in Unreal Engine, both in C++ and Blueprints. Whether it's crafting responsive mechanics, building networked experiences, or solving technical design puzzles, I thrive on bringing interactivity to life.</p>
+                </div>
+            </div>
+            
+            <div class="contact-section">
+                <h3>Contact</h3>
+                <p>I'm always looking for new and exciting opportunities. Let's connect.</p>
+                <div class="contact-links">
+                    <a href="mailto:tanveer7652@gmail.com" target="_blank" rel="noopener noreferrer">tanveer7652@gmail.com</a>
+                    <a href="tel:+46769703849" target="_blank" rel="noopener noreferrer">+46 76 9703849</a>
+                    <a href="https://www.linkedin.com/in/m-alitanveer" target="_blank" rel="noopener noreferrer">Linkedin</a>
+                    <a href="https://www.upwork.com/freelancers/~012725f3d572cdf737" target="_blank" rel="noopener noreferrer">Upwork</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Projects Page -->
+    <div class="page" id="projects-page">
+        <div class="container">
+            <h1 class="section-title">My Projects</h1>
+            <p style="color: #ddd; text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Below is a selection of personal and freelance projects I've worked on, ranging from short creative experiments to long-term client collaborations. These include gameplay prototypes, simulation tools, and fully-featured game systems. Some were built under tight deadlines, while others evolved over months of iteration and polish.</p>
+            <p style="color: #ddd; text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">You can click on each project's name to read more in detail about it. Each project page details the technologies used and my specific contributions to it.</p>
+            
+            <div class="projects-grid">
+                <div class="project-thumbnail project-card" onclick="showProjectDetail('moba')">
+                    <img src="MOBA_Character.jpg" alt="Mythic MOBA" width="350" height="200">
+                    <div class="project-thumbnail-info">
+                        <div class="project-thumbnail-title">Unannounced PvP MOBA</div>
+                        <div class="project-thumbnail-desc">Competitive, class-based multiplayer PvP arena game with networking focus</div>
+                    </div>
+                </div>
+
+                <div class="project-thumbnail project-card" onclick="showProjectDetail('furniture-configurator')">
+                    <img src="Furniture_SS.png" alt="Furniture Configurator">
+                    <div class="project-thumbnail-info">
+                        <div class="project-thumbnail-title">Furniture Configurator</div>
+                        <div class="project-thumbnail-desc">SaaS-based, real-time 3D furniture configurator with web integration</div>
+                    </div>
+                </div>
+
+                <div class="project-thumbnail project-card" onclick="showProjectDetail('cosmo-conquerors')">
+                    <img src="Cosmo_SS.jpg" alt="Cosmo Conquerors">
+                    <div class="project-thumbnail-info">
+                        <div class="project-thumbnail-title">Cosmo Conquerors</div>
+                        <div class="project-thumbnail-desc">Narrative-driven action-adventure game with dual campaign perspectives</div>
+                    </div>
+                </div>
+
+                <div class="project-thumbnail project-card" onclick="showProjectDetail('mechanical-vehicle-simulator')">
+                    <img src="Kamaz_SS.png" alt="Mechanical Vehicle Simulator">
+                    <div class="project-thumbnail-info">
+                        <div class="project-thumbnail-title">Mechanical Vehicle Simulator</div>
+                        <div class="project-thumbnail-desc">Advanced truck simulator with realistic training environment</div>
+                    </div>
+                </div>
+
+                <div class="project-thumbnail project-card" onclick="showProjectDetail('stickman-pvp')">
+                    <img src="Stickman_Character-Select.jpg" alt="Stickman PvP" width="350" height="200">
+                    <div class="project-thumbnail-info">
+                        <div class="project-thumbnail-title">Stickman PvP</div>
+                        <div class="project-thumbnail-desc">Fast-paced multiplayer fighting game</div>
+                    </div>
+                </div>
+
+                <div class="project-thumbnail project-card" onclick="showProjectDetail('Qaf')">
+                    <img src="Qaf_SS.png" alt="Stickman PvP" width="350" height="200">
+                    <div class="project-thumbnail-info">
+                        <div class="project-thumbnail-title">Project Qa'f</div>
+                        <div class="project-thumbnail-desc">Arabic mythology combat game project with advanced gameplay systems</div>
+                    </div>
+                </div>
+
+                <div class="project-thumbnail project-card" onclick="showProjectDetail('vr-bowling-pvp')">
+                    <img src="Bowling_stock.jpg" alt="VR Bowling PvP">
+                    <div class="project-thumbnail-info">
+                        <div class="project-thumbnail-title">VR Bowling PvP</div>
+                        <div class="project-thumbnail-desc">Immersive VR bowling experience with multiplayer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Detail Pages -->
+    <div class="page" id="project-moba">
+        <div class="container">
+            <div class="project-detail">
+                <div class="project-header">
+                    <h1 class="section-title">Unannounced PvP MOBA</h1>
+                    <div class="project-hero-image">
+                        <img src="MOBA_SS.png" alt="MOBA Game" width="800" height="400">
+                    </div>
+                    <p class="image-note">Since the game is unannounced, gameplay images can not be shown</p>
+                   
+                </div>
+                
+                <div class="project-info-grid">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Unreal Developer (Networking & Gameplay)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Current Status</span>
+                            <span class="meta-value">In Development (Unannounced)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time Spent</span>
+                            <span class="meta-value">6 months - Ongoing</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platforms</span>
+                            <span class="meta-value">PC</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genres</span>
+                            <span class="meta-value">MOBA, PvP</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Game Engine</span>
+                            <span class="meta-value">Unreal Engine 5</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Programming Languages</span>
+                            <span class="meta-value">C++, Blueprints</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version Control</span>
+                            <span class="meta-value">Perforce</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>About The Game</h3>
+                        <p>This is a competitive, class-based multiplayer PvP arena game in development using Unreal Engine. Inspired by titles like League of Legends and World of Warcraft Arena, the project blends fast-paced combat, strategic ability usage, and ranked matchmaking into short, intense encounters (1v1, 2v2, 3v3 formats).</p>
+                        
+                        <p>The game is being built by a small team, with responsibilities split between core gameplay, networking, and systems. My primary focus is on replication architecture, networked gameplay systems, and some key combat mechanics.</p>
+                        
+                        <h3>Core Features</h3>
+                        <ul>
+                            <li>Real-time class-based arena combat with over six unique roles</li>
+                            <li>Multiple game modes (Casual, Ranked, Custom) with ELO-based matchmaking</li>
+                            <li>Full ability hotbar system (1–0) with targeting types (skill shots, AoE, auto-aim)</li>
+                            <li>MMO-style camera and movement controls (WASD + Mouse Look)</li>
+                        </ul>
+                        
+                        <h3>My Contributions</h3>
+                        <ul>
+                            <li>Developed the core networking architecture, including replication logic for movement, input, and all ability systems</li>
+                            <li>Implemented network-safe cooldowns, dodge rolls, and other timing-sensitive combat actions</li>
+                            <li>Collaborated on matchmaking and ELO ranking logic, including flexible game mode rules (1v1, 2v2, 3v3)</li>
+                            <li>Built and debugged replication-safe combat mechanics (e.g., global cooldowns, status effects, AoE targeting)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('projects')">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="project-furniture-configurator">
+        <div class="container">
+            <div class="project-detail">
+                <div class="project-header">
+                    <h1 class="section-title">Furniture Configurator</h1>
+                    <div class="project-hero-image">
+                        <img src="Furniture_SS.png" alt="Furniture Configurator" width="800" height="400">
+                    </div>
+                    <p class="image-note">An NDA signed with the client stops me from sharing any more images</p>
+
+                </div>
+                
+                <div class="project-info-grid">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Lead Developer</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Current Status</span>
+                            <span class="meta-value">In Progress</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time Spent</span>
+                            <span class="meta-value">1 month</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platforms</span>
+                            <span class="meta-value">Web</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Target Use Cases</span>
+                            <span class="meta-value">E-commerce, Architectural Visualization, Web-based Product Customization</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Game Engine</span>
+                            <span class="meta-value">Unreal Engine 5</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Programming Languages</span>
+                            <span class="meta-value">C++, Blueprints</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version Control</span>
+                            <span class="meta-value">Diversion</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>About The Project</h3>
+                        <p>This is a SaaS-based, real-time 3D furniture configurator developed using Unreal Engine 5.6 and designed to integrate seamlessly with a pre-existing web backend. The goal is to deliver an intuitive, mobile-first experience that allows users to explore, customize, and export 3D furniture products interactively via browser through Pixel Streaming.</p>
+                        
+                        <p>The configurator dynamically pulls product data, materials, pricing, and configuration rules from the backend, ensuring flexibility and scalability across different client setups. The application is designed with high performance, runtime modularity, and cross-platform responsiveness as top priorities.</p>
+                        
+                        <h3>Core Features</h3>
+                        <ul>
+                            <li>Async loading of 3D assets and materials via internal storage or S3</li>
+                            <li>Responsive UI/UX with touch support and mobile-first layout</li>
+                            <li>Optimized scene management for both small and large product visualization</li>
+                        </ul>
+                        
+                        <h3>My Contributions</h3>
+                        <ul>
+                            <li>Developed the full runtime architecture in Blueprints, supporting scalable, backend-driven configuration logic.</li>
+                            <li>Engineered async asset loading pipelines using both S3-hosted and internally packed assets to balance performance and flexibility.</li>
+                            <li>Implemented camera controls, pinch/scroll zoom, and orbital inspection optimized for both desktop and mobile</li>
+                            <li>Built region-aware pricing UI, including currency switching and dimension displays based on dynamic flags</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('projects')">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="project-cosmo-conquerors">
+        <div class="container">
+            <div class="project-detail">
+                <div class="project-header">
+                    <h1 class="section-title">Cosmo Conquerors</h1>
+                    <div class="project-hero-image">
+                        <video controls loop playsinline>
+                            <source src="CinematicTeaser_Cosmo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-hero-image">
+                        <video controls loop playsinline>
+                            <source src="Cosmo_Gameplay.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+
+                    </div>
+                </div>
+                
+                <div class="project-info-grid">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Lead Developer</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Current Status</span>
+                            <span class="meta-value">Delivered to Client</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time Spent</span>
+                            <span class="meta-value">1.5 Years</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genres</span>
+                            <span class="meta-value">Action, Adventure, RPG</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platforms</span>
+                            <span class="meta-value">PC, Console</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Game Engine</span>
+                            <span class="meta-value">Unreal Engine 5</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Programming Languages</span>
+                            <span class="meta-value">C++, Blueprints</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Camera Systems</span>
+                            <span class="meta-value">Third Person View, First Person View, Dynamic Camera Switching</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">AI Systems</span>
+                            <span class="meta-value">Behavior Trees for AI Logic</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version Control</span>
+                            <span class="meta-value">Perforce</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>About The Game</h3>
+                        <p>In a future where Earth lies ravaged, humanity's quest for a new home takes a perilous turn as a scout team encounters unexpected hostility from native inhabitants on a potential planet for settlement. Led by the determined Captain Alex, a daring expedition embarks to unravel the mystery behind the unprovoked assault and explore the enigmatic world's untamed wilderness.</p>
+                        
+                        <p>As tensions rise and alliances shift, the fate of humanity hangs in the balance amidst the vast unknowns of space. In this gripping tale, players experience both sides of the conflict, navigating the challenges of survival and diplomacy in two separate campaigns—one from the human perspective, and the other from the viewpoint of the inhabitant aliens.</p>
+                        
+                        <h3>My Contributions</h3>
+                        <ul>
+                            <li>Led the development of unique playable characters with distinct abilities and movement mechanics using C++</li>
+                            <li>Architected and maintained a robust code base for the game's development.</li>
+                            <li>Designed and implemented advanced weapon systems featuring a variety of firearms and melee weapons with unique behaviors.</li>
+                            <li>Worked closely with game designers to integrate mechanics and ensure cohesive gameplay experiences.</li>
+                            <li>Collaborated on creating an advanced AI system using Behavior Trees in UE5 for strategic AI communication and dynamic action selection.</li>
+                            <li>Actively coded campaign missions, enhancing related mechanics for a compelling player experience.</li>
+                            <li>Supervised and mentored a team of developers, assigning tasks and ensuring adherence to architectural standards.</li>
+                            <li>Guided the design and development of varied combat experiences, balancing character abilities and weapon systems.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('projects')">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="project-mechanical-vehicle-simulator">
+        <div class="container">
+            <div class="project-detail">
+                <div class="project-header">
+                    <h1 class="section-title">Mechanical Vehicle Simulator</h1>
+                    <div class="project-hero-image">
+                        <img src="Kamaz_SS.png" alt="Mechanical Vehicle Simulator" width="800" height="400">
+                    </div>
+                </div>
+                
+                <div class="project-info-grid">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Sole Developer and Designer</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Current Status</span>
+                            <span class="meta-value">Delivered to Client</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time Spent</span>
+                            <span class="meta-value">1 year</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genres</span>
+                            <span class="meta-value">Simulation, Visualization</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platforms</span>
+                            <span class="meta-value">PC, Dedicated Hardware</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Game Engine</span>
+                            <span class="meta-value">Unreal Engine 5</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Programming Languages</span>
+                            <span class="meta-value">C++, Blueprints</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Camera Systems</span>
+                            <span class="meta-value">External Vehicle View, Driver Perspective View, Spectator View</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Vehicle System</span>
+                            <span class="meta-value">Uses an Inhouse built plugin for complete mechanical control</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version Control</span>
+                            <span class="meta-value">Perforce</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>About The Game</h3>
+                        <p>The project involves the development of a sophisticated mechanical vehicle simulator designed to provide a highly realistic training experience for driving heavy mechanical vehicles, particularly trucks. This simulator meticulously replicates all the gear changes found in mechanical vehicles, offering users a comprehensive understanding of the intricacies involved in gear shifting. </p>
+                            
+                        <p>It features tangible gears and changeable differentials, allowing drivers to experience the full range of high and low gear ratios essential for navigating various driving conditions. Additionally, the simulator incorporates advanced functionality, including the innovative use of NDisplay in Unreal Engine, enabling the seamless sharing of displays across multiple screens belonging to multiple computers, thereby enhancing the immersive training experience.</p>
+                                                
+                        <h3>My Contributions</h3>
+                        <ul>
+                            <li>Developed the entire simulator from scratch using primarily C++, ensuring a robust and efficient codebase.</li>
+                            <li>Created the overall manual clutch and gearing system based on realistic world scenarios, providing an authentic driving experience.</li>
+                            <li>Implemented the engine RPM system to accurately simulate the engine's behavior under various conditions.</li>
+                            <li>Utilized nDisplay in Unreal Engine to share the display across multiple screens belonging to multiple computers, enhancing the immersive training experience.</li>
+                            <li>Designed the project for dedicated hardware to simulate real-world driving conditions, increasing the training effectiveness.</li>
+                            <li>Configured input variables to be read through TCP ports, enabling real-time data processing and interaction with the simulator.</li>
+                            <li>Integrated real simulator hardware, including a clutch and gears, to provide hands-on training for heavy vehicle driving.</li>
+                            <li>Packaged the entire vehicular code into a plugin, which is set to be released soon on the Unreal Engine Marketplace, making it accessible for further development and use.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('projects')">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="project-stickman-pvp">
+        <div class="container">
+            <div class="project-detail">
+                <div class="project-header">
+                    <h1 class="section-title">StickMan PvP</h1>
+                    <div class="project-hero-image">
+                        <img src="Stickman_Character-Select.jpg" alt="Stickman Character Select">
+                    </div>
+                    <div class="project-hero-image">
+                        <img src="Stickman-UE-SS.png" alt="Stickman">
+                    </div>
+                </div>
+                
+                <div class="project-info-grid">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Developer</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Current Status</span>
+                            <span class="meta-value">Delivered to Client</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time Spent</span>
+                            <span class="meta-value">4 months</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genres</span>
+                            <span class="meta-value">Fighting, PvP</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platforms</span>
+                            <span class="meta-value">PC</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Game Engine</span>
+                            <span class="meta-value">Unreal Engine 5</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Programming Languages</span>
+                            <span class="meta-value">C++, Blueprints</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Camera Perspective</span>
+                            <span class="meta-value">2.5D Perspective</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version Control</span>
+                            <span class="meta-value">Perforce</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>About The Game</h3>
+                        <p>Stickman, an homage to classic stickman games, is a fighting game crafted within Unreal Engine 5, drawing inspiration from titles like Tekken. It innovates multiplayer combat with a listen server architecture and EOS integration in C++, eliminating the need for dedicated servers while ensuring robust multiplayer services. The game features a dynamic combo system for fluid combat and precise synchronization of gameplay actions across clients through efficient RPC usage. </p>
+                                                
+                        <h3>My Contributions</h3>
+                        <ul>
+                            <li>Developed a listen server architecture for seamless multiplayer combat interactions in Unreal Engine 5.</li>
+                            <li>Integrated EOS SDK to facilitate robust multiplayer services and backend infrastructure in C++</li>
+                            <li>Designed a dynamic combo system tailored for engaging combat experiences</li>
+                            <li>Achieved precise synchronization of gameplay actions across clients using RPCs</li>
+                            <li>Optimized network performance to minimize latency and maximize responsiveness</li>
+                            <li>Harnessed Unreal Engine 5's Nanite virtualized geometry and Lumen global illumination, to create visual effects unique to the game's atmosphere</li>
+                            <li>Utilized EOS lobby creation for integrated voice chat functionality, enhancing player communication and enjoyment</li>
+                            <li>Leveraged EOS session variables to implement dedicated matchmaking features, including friend invite codes and region-based matchmaking, ensuring optimized player matchups.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('projects')">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="project-Qaf">
+        <div class="container">
+            <div class="project-detail">
+                <div class="project-header">
+                    <h1 class="section-title">Project Qa'f</h1>
+                    <div class="project-hero-image">
+                        <img src="Qaf_SS.png" alt="Stickman Character Select">
+                    </div>
+                    <div class="project-hero-image">
+                        <video controls loop playsinline>
+                            <source src="Qaf-prototype.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>Prototype combat against a Djinn boss</p>
+                </div>
+                
+                <div class="project-info-grid">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Prototype Developer</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Current Status</span>
+                            <span class="meta-value">Prototype Completed</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time Spent</span>
+                            <span class="meta-value">3 months</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genres</span>
+                            <span class="meta-value">Action, Adventure, RPG</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platforms</span>
+                            <span class="meta-value">PC</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Game Engine</span>
+                            <span class="meta-value">Unreal Engine 5</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Programming Languages</span>
+                            <span class="meta-value">C++, Blueprints</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Camera Perspective</span>
+                            <span class="meta-value">Third Person View, Birds Eye View</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version Control</span>
+                            <span class="meta-value">Git</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>About The Game</h3>
+                        <p>Qaf immerses players in a world steeped in Arabic and Islamic mythology, centered around the story of Jinn prince Azar and his brother Qabid. Set against the backdrop of the Second Angel-Jinn War, players traverse the perilous corruption within Mount Qaf to prevent an impending catastrophe. Explore the hidden refuge of the Jinn deep within the mountain, uncovering ancient secrets and mystical elements inspired by Middle-Eastern myths. With rogue-lite gameplay, players embark on multiple expeditions, delving deeper into the game's magical features with each journey</p>
+                                                
+                        <h3>My Contributions</h3>
+                        <ul>
+                            <li>Devised a robust ability system in C++ allowing runtime ability replacement for enhanced versatility</li>
+                            <li>Engineered core gameplay mechanics, including movement and combat, to elevate player experience</li>
+                            <li>Created an enemy AI system using Behavior Trees in UE5 for prototype boss fight.</li>
+                            <li>Designed and refined prototype gameplay mechanics, encompassing a variety of abilities, to iterate and optimize core gameplay features</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('projects')">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="project-vr-bowling-pvp">
+        <div class="container">
+            <div class="project-detail">
+                <div class="project-header">
+                    <h1 class="section-title">VR Bowling PvP</h1>
+                </div>
+                
+                <div class="project-info-grid">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Sole Developer</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Current Status</span>
+                            <span class="meta-value">Delivered to Client</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Time Spent</span>
+                            <span class="meta-value">2 months</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genres</span>
+                            <span class="meta-value">VR, Sports</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Platforms</span>
+                            <span class="meta-value">Meta Quest 2</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Game Engine</span>
+                            <span class="meta-value">Unreal Engine 5</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Programming Languages</span>
+                            <span class="meta-value">C++, Blueprints</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Camera Perspective</span>
+                            <span class="meta-value">first Person View</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version Control</span>
+                            <span class="meta-value">Git</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>About The Game</h3>
+                        <p>VR Bowling PvP was my first external project, which brought a lot of learning opportunities for me. The project revolved around multiplayer sessions in EOS which were based on dedicated server system and the dedicated server was hosted on Azure PlayFab. The interesting thing about this project was the addition of positional voice chat by using EOS. </p>
+                                                
+                        <h3>My Contributions</h3>
+                        <ul>
+                            <li>Crafted lifelike ball physics right within Unreal Engine, making sure every grab, throw, and pin collision feels just like the real deal, immersing players in the bowling action.</li>
+                            <li>Set up dedicated servers on PlayFab, ensuring smooth multiplayer showdowns so players can go head-to-head without a hitch, bringing the excitement of PvP bowling to life</li>
+                            <li>Added cool features like haptic feedback to amp up the virtual reality experience, letting players feel every roll and impact as if they were right there on the lanes</li>
+                            <li>Made sure scores are recorded in real-time, so players always know where they stand, keeping the competition fierce and the fun rolling in the Unreal Engine world</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('projects')">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Navigation functionality
+        const navbar = document.getElementById('navbar');
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const backToTop = document.getElementById('back-to-top');
+
+        // Mobile menu toggle
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top functionality
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            // Close mobile menu
+            navMenu.classList.remove('active');
+
+            // Animate elements
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.fade-in');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.animation = 'fadeInUp 0.8s ease both';
+                    }, index * 100);
+                });
+            }, 100);
+        }
+
+        // Project detail navigation
+        function showProjectDetail(projectId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show project detail page
+            const projectPage = document.getElementById('project-' + projectId);
+            if (projectPage) {
+                projectPage.classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations on page load
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.animation = 'fadeInUp 0.8s ease both';
+                }, index * 100);
+            });
+        });
+
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease both';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.timeline-item, .project-card, .project-thumbnail').forEach(el => {
+            observer.observe(el);
+        });
+        // Enhanced typing effect for hero section
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect on page load
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                setTimeout(() => {
+                    typeWriter(heroTitle, originalText, 100);
+                }, 500);
+            }
+        });
+
+        // Add particle background effect
+        function createParticles() {
+            const particleContainer = document.createElement('div');
+            particleContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+                overflow: hidden;
+            `;
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 2px;
+                    height: 2px;
+                    background: rgba(255, 107, 107, ${Math.random() * 0.5 + 0.2});
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: float ${Math.random() * 10 + 10}s infinite linear;
+                `;
+                particleContainer.appendChild(particle);
+            }
+            
+            document.body.appendChild(particleContainer);
+        }
+
+        // Add floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            
+            /* Add hover effects for better interactivity */
+            .project-card, .project-thumbnail, .timeline-item {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .project-card::before, .project-thumbnail::before {
+                content: '';
+                position: absolute;
+                top: -100%;
+                left: -100%;
+                width: 300%;
+                height: 300%;
+                background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+                transition: all 0.6s;
+                transform: rotate(45deg);
+            }
+            
+            .project-card:hover::before, .project-thumbnail:hover::before {
+                top: -50%;
+                left: -50%;
+            }
+            
+            /* Add pulse animation for CTA buttons */
+            @keyframes pulse {
+                0% {
+                    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+                }
+                70% {
+                    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+                }
+                100% {
+                    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+                }
+            }
+            
+            .btn-primary {
+                animation: pulse 2s infinite;
+            }
+            
+            .btn-primary:hover {
+                animation: none;
+            }
+            
+            /* Add glow effect for active navigation */
+            .nav-menu a.active {
+                color: #ff6b6b;
+                text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            }
+            
+            /* Improved mobile responsiveness */
+            @media (max-width: 576px) {
+                .hero-content {
+                    padding: 0 1rem;
+                }
+                
+                .hero-image {
+                    width: 150px;
+                    height: 150px;
+                }
+                
+                .project-info-grid {
+                    gap: 2rem;
+                }
+                
+                .timeline-item {
+                    padding: 1.5rem;
+                }
+                
+                .nav-container {
+                    padding: 0 1rem;
+                }
+            }
+            
+            /* Add smooth transitions for all interactive elements */
+            * {
+                transition: all 0.3s ease;
+            }
+            
+            /* Custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            ::-webkit-scrollbar-track {
+                background: #111;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                border-radius: 4px;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(45deg, #ff8e8e, #6ee7de);
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize particles
+        createParticles();
+
+        // Add navigation active state management
+        function updateActiveNav(pageId) {
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLink = document.querySelector(`.nav-menu a[onclick="showPage('${pageId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // Update showPage function to include active nav state
+        const originalShowPage = showPage;
+        showPage = function(pageId) {
+            originalShowPage(pageId);
+            updateActiveNav(pageId);
+        };
+
+        // Set initial active state
+        updateActiveNav('home');
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Add loading states for better UX
+        function showLoading(container) {
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            `;
+        }
+
+        // Performance optimization: Lazy load images
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        // Observe all images with data-src attribute
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+
+        console.log('Portfolio website initialized successfully!');
+    </script>
 </body>
 </html>
